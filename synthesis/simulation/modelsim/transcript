@@ -1,0 +1,28 @@
+# Compile of sigmoid_taylor.sv was successful.
+# Compile of taylor_sigmoid_tb.sv was successful.
+# 2 compiles, 0 failed with no errors.
+vsim work.psoa_sigmoid_tb
+# vsim work.psoa_sigmoid_tb 
+# Start time: 15:39:11 on Apr 26,2021
+# Loading sv_std.std
+# Loading work.psoa_sigmoid_tb
+# Loading work.sigmoid_taylor
+step
+run -all
+# f_x = 111110100000
+# ** Note: $stop    : /home/daniel/Documents/GitHub/sigmoid_taylor/testbenches/taylor_sigmoid_tb.sv(50)
+#    Time: 20 ns  Iteration: 0  Instance: /psoa_sigmoid_tb
+# Break in Module psoa_sigmoid_tb at /home/daniel/Documents/GitHub/sigmoid_taylor/testbenches/taylor_sigmoid_tb.sv line 50
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+step
+step
+step
+step
+step
+step
+step
+step
+step
+# End time: 15:50:28 on Apr 26,2021, Elapsed time: 0:11:17
+# Errors: 0, Warnings: 1

@@ -1,0 +1,15 @@
+/home/daniel/Documents/GitHub/sigmoid_taylor/testbenches/taylor_sigmoid_tb.sv {1 {vlog -work work -sv -stats=none /home/daniel/Documents/GitHub/sigmoid_taylor/testbenches/taylor_sigmoid_tb.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module psoa_sigmoid_tb
+
+Top level modules:
+	psoa_sigmoid_tb
+
+} {} {}} /home/daniel/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv {1 {vlog -work work -sv -stats=none /home/daniel/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module sigmoid_taylor
+
+Top level modules:
+	sigmoid_taylor
+
+} {} {}}
