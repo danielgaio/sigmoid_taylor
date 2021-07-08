@@ -3,52 +3,45 @@
 `timescale 1ns/1ps
 
 module psoa_sigmoid_tb();
-
 	logic [11:0] x_tb;
 	logic [11:0] f_x_tb;
 	logic clk_tb;
 
 	shortreal 	generated_results [1000];
 	shortreal 	expected_results [1000];
-	logic 		j;
+	logic 			j;
 	shortreal 	passo, passo_abs, temp, temp2; // 32 bit
-	int 		k, i;
+	int 				k, i;
 	shortreal 	erro_medio, max_error;
-	int 		clk_counter;
-
-	// test module
+	int 				clk_counter;
+	// modulo teste
 	sigmoid_taylor sigmoid_taylor_DUT(
 		.x(x_tb),
 		.clk(clk_tb),
 		.f_x(f_x_tb)
 	);
-
 	// inicializar clock
 	initial begin
 		clk_tb = 0;
 		clk_counter = 0;
 	end
-
 	// oscilar clock
 	always begin
 		#10
 		clk_tb = ~clk_tb;
 		clk_counter++;
 	end
-
 	// bloco do reset: em reset no primeiro ciclo
 	//initial begin reset_tb = 1; #9.9 reset_tb = 0; end
-
 	// estimulos
 	initial begin
-
 		fork
-		    x_tb = 11'b010_10000000;	// sig(2.5)=0.924 | em bin: 000_11101101
-		    #20
+		    //x_tb = 12'b010_10000000;	// sig(2.5)=0.924 | em bin: 000_11101101
+		    x_tb = 12'b0011_00000000;
+				#40
 		    $display("f_x = %b", f_x_tb);
 		join
 		$stop;
-
 		// secao para geracao de valores de entrada
 		fork
 			passo = -8;

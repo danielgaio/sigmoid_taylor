@@ -2,19 +2,19 @@
 
 `timescale 1ns / 1ps
 
+// Interface do chip
 module sigmoid_taylor (
-	input 	logic [11:0] x,		// 12 bits
+	input 	logic [11:0] x,
 	input 	logic clk,
 	output 	logic [11:0] f_x
 );
 	
 	// sinais auxiliares
-	logic [11:0] q, S, result_mult;
-	logic [15:0] W, V, lambda, n_temp;
-	logic [10:0] phi_xi, xi, p; // tamanhos originais
-	//logic [11:0] phi_xi, xi, p; // tam. meus testes
-	logic [7:0] phi;
 	logic [3:0] n;	// igual a ni
+	logic [7:0] phi;
+	logic [10:0] phi_xi, xi, B, D;
+	logic [11:0] q, S, result_mult;
+	logic [15:0] W, V, lambda;
 	
 	// caracteristica "por partes" da equacao
 	always @ (posedge clk) begin
@@ -57,10 +57,7 @@ module sigmoid_taylor (
 
 	// Gerar o valor de W e V
 	always @ (*) begin
-
-		// Artigo fala lambda mas desconfio que esta errado e que seja n.
-		//No modulo, M-SU tem n como entrada, nao lambda
-		//if (lambda == 0) begin	// DISCUTIR
+		// V e W tem 16 bits
 		if (n == 0) begin
 			W <= phi>>2;
 			V <= phi;		// revisando, esses eram os com shift por 0
@@ -111,15 +108,23 @@ module sigmoid_taylor (
 
 	// Gerar valor de phi e ni resultado de uma multiplicacao
 	always @ (*) begin
-		result_mult <= xi * 4'b1_011;
-		// n eh a parte inteira de x / ln(2)
+		//result_mult <= xi * 4'b1_011;
+		// -------- em construcao --------------
+		// essa logica implementa xi*1.0111 sendo 1.0111 = log_2(e) = 1/log_e(2)
+		B <= xi>>1;
+		D <= xi>>4;
+		//F <= ~D;
+		//result_mult <= xi+B+F+1;
+		result_mult <= xi+B-D;
+		// -------- em construcao --------------
 		// 1/ln(2) ~= 1.46
+		// n eh a parte inteira de x / ln(2)
 		//phi eh a parte decimal de x / ln(2)
-		phi <= result_mult[7:0];
 		n <= result_mult[11:8];
+		phi <= result_mult[7:0];
 	end
 
-	// Gerar valor de xi, já contendo o sinal p
+	// Gerar valor de xi, ja contendo o sinal p
 	always @ (*) begin
 		if (x[11] == 1) begin
 			xi <= ~x[10:0] + 1;
