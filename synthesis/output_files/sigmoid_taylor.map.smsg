@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at sigmoid_taylor.sv(31): always construct contains both blocking and non-blocking assignments File: /home/daniel/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv Line: 31
