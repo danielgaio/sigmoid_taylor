@@ -1,10 +1,10 @@
-Analysis & Synthesis Status : Successful - Thu Jul 29 07:32:58 2021
+Analysis & Synthesis Status : Successful - Fri Jul 30 17:55:35 2021
 Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 Revision Name : sigmoid_taylor
 Top-level Entity Name : sigmoid_taylor
 Family : Cyclone IV E
-Total logic elements : 171
-    Total combinational functions : 171
+Total logic elements : 182
+    Total combinational functions : 182
     Dedicated logic registers : 12
 Total registers : 12
 Total pins : 25

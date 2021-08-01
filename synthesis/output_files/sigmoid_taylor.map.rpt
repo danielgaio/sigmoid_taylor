@@ -1,5 +1,5 @@
 Analysis & Synthesis report for sigmoid_taylor
-Thu Jul 29 07:32:58 2021
+Fri Jul 30 17:55:35 2021
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -44,13 +44,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Jul 29 07:32:58 2021       ;
+; Analysis & Synthesis Status        ; Successful - Fri Jul 30 17:55:35 2021       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; sigmoid_taylor                              ;
 ; Top-level Entity Name              ; sigmoid_taylor                              ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 171                                         ;
-;     Total combinational functions  ; 171                                         ;
+; Total logic elements               ; 182                                         ;
+;     Total combinational functions  ; 182                                         ;
 ;     Dedicated logic registers      ; 12                                          ;
 ; Total registers                    ; 12                                          ;
 ; Total pins                         ; 25                                          ;
@@ -171,36 +171,36 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------+---------+
 
 
-+--------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                  ;
-+---------------------------------------------+----------------+
-; Resource                                    ; Usage          ;
-+---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 171            ;
-;                                             ;                ;
-; Total combinational functions               ; 171            ;
-; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 59             ;
-;     -- 3 input functions                    ; 79             ;
-;     -- <=2 input functions                  ; 33             ;
-;                                             ;                ;
-; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 102            ;
-;     -- arithmetic mode                      ; 69             ;
-;                                             ;                ;
-; Total registers                             ; 12             ;
-;     -- Dedicated logic registers            ; 12             ;
-;     -- I/O registers                        ; 0              ;
-;                                             ;                ;
-; I/O pins                                    ; 25             ;
-;                                             ;                ;
-; Embedded Multiplier 9-bit elements          ; 0              ;
-;                                             ;                ;
-; Maximum fan-out node                        ; tmp_mult[8]~16 ;
-; Maximum fan-out                             ; 34             ;
-; Total fan-out                               ; 619            ;
-; Average fan-out                             ; 2.66           ;
-+---------------------------------------------+----------------+
++-----------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                     ;
++---------------------------------------------+-------------------+
+; Resource                                    ; Usage             ;
++---------------------------------------------+-------------------+
+; Estimated Total logic elements              ; 182               ;
+;                                             ;                   ;
+; Total combinational functions               ; 182               ;
+; Logic element usage by number of LUT inputs ;                   ;
+;     -- 4 input functions                    ; 60                ;
+;     -- 3 input functions                    ; 83                ;
+;     -- <=2 input functions                  ; 39                ;
+;                                             ;                   ;
+; Logic elements by mode                      ;                   ;
+;     -- normal mode                          ; 108               ;
+;     -- arithmetic mode                      ; 74                ;
+;                                             ;                   ;
+; Total registers                             ; 12                ;
+;     -- Dedicated logic registers            ; 12                ;
+;     -- I/O registers                        ; 0                 ;
+;                                             ;                   ;
+; I/O pins                                    ; 25                ;
+;                                             ;                   ;
+; Embedded Multiplier 9-bit elements          ; 0                 ;
+;                                             ;                   ;
+; Maximum fan-out node                        ; result_mult[9]~18 ;
+; Maximum fan-out                             ; 37                ;
+; Total fan-out                               ; 644               ;
+; Average fan-out                             ; 2.64              ;
++---------------------------------------------+-------------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -208,7 +208,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+----------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name    ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+----------------+--------------+
-; |sigmoid_taylor            ; 171 (171)           ; 12 (12)                   ; 0           ; 0            ; 0       ; 0         ; 25   ; 0            ; |sigmoid_taylor     ; sigmoid_taylor ; work         ;
+; |sigmoid_taylor            ; 182 (182)           ; 12 (12)                   ; 0           ; 0            ; 0       ; 0         ; 25   ; 0            ; |sigmoid_taylor     ; sigmoid_taylor ; work         ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -248,19 +248,19 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; boundary_port         ; 25                          ;
 ; cycloneiii_ff         ; 12                          ;
 ;     SLD               ; 12                          ;
-; cycloneiii_lcell_comb ; 171                         ;
-;     arith             ; 69                          ;
-;         2 data inputs ; 17                          ;
-;         3 data inputs ; 52                          ;
-;     normal            ; 102                         ;
-;         0 data inputs ; 1                           ;
-;         1 data inputs ; 3                           ;
-;         2 data inputs ; 12                          ;
-;         3 data inputs ; 27                          ;
-;         4 data inputs ; 59                          ;
+; cycloneiii_lcell_comb ; 182                         ;
+;     arith             ; 74                          ;
+;         2 data inputs ; 20                          ;
+;         3 data inputs ; 54                          ;
+;     normal            ; 108                         ;
+;         0 data inputs ; 3                           ;
+;         1 data inputs ; 2                           ;
+;         2 data inputs ; 14                          ;
+;         3 data inputs ; 29                          ;
+;         4 data inputs ; 60                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 15.50                       ;
-; Average LUT depth     ; 13.60                       ;
+; Max LUT depth         ; 15.60                       ;
+; Average LUT depth     ; 13.82                       ;
 +-----------------------+-----------------------------+
 
 
@@ -279,28 +279,26 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Thu Jul 29 07:32:51 2021
+    Info: Processing started: Fri Jul 30 17:55:28 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off sigmoid_taylor -c sigmoid_taylor
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file /home/daniel/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv
     Info (12023): Found entity 1: sigmoid_taylor File: /home/daniel/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv Line: 6
 Info (12127): Elaborating entity "sigmoid_taylor" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at sigmoid_taylor.sv(22): truncated value with size 13 to match size of target (12) File: /home/daniel/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv Line: 22
 Warning (10230): Verilog HDL assignment warning at sigmoid_taylor.sv(31): truncated value with size 32 to match size of target (16) File: /home/daniel/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv Line: 31
-Warning (10230): Verilog HDL assignment warning at sigmoid_taylor.sv(32): truncated value with size 13 to match size of target (12) File: /home/daniel/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv Line: 32
-Warning (10230): Verilog HDL assignment warning at sigmoid_taylor.sv(154): truncated value with size 32 to match size of target (11) File: /home/daniel/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv Line: 154
+Warning (10230): Verilog HDL assignment warning at sigmoid_taylor.sv(155): truncated value with size 32 to match size of target (11) File: /home/daniel/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv Line: 155
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 196 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 207 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 13 input pins
     Info (21059): Implemented 12 output pins
-    Info (21061): Implemented 171 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 612 megabytes
-    Info: Processing ended: Thu Jul 29 07:32:58 2021
+    Info (21061): Implemented 182 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 3 warnings
+    Info: Peak virtual memory: 610 megabytes
+    Info: Processing ended: Fri Jul 30 17:55:35 2021
     Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:19
+    Info: Total CPU time (on all processors): 00:00:18
 
 

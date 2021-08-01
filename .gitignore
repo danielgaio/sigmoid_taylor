@@ -1,2 +1,6 @@
+*.bak
 synthesis/db/
-synthesis/incremental_db/compiled_partitions/
+synthesis/incremental_db/
+synthesis/output_files/
+synthesis/simulation/modelsim/rtl_work/
+synthesis/simulation/modelsim/work/

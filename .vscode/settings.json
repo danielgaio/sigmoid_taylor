@@ -1,5 +1,6 @@
 {
   "conventionalCommits.scopes": [
-    "Modulo sigmoide"
+    "Modulo sigmoide",
+    "Testbench"
   ]
 }

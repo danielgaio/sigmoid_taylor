@@ -11,15 +11,15 @@ cModel Technology
 Z0 d/home/daniel/Documents/GitHub/sigmoid_taylor/synthesis/simulation/modelsim
 vsigmoid_taylor
 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
-!s110 1627604298
+!s110 1627815744
 !i10b 1
-!s100 OIlnFNRF^_fPnmQdglX642
+!s100 d`hEBC3zZ^o_mEG@bOI`=0
 !s11b Dg1SIo80bB@j0V0VzS_@n1
-IM<j5AIj2LKO=`Y5aW7NoV2
+IhFSdg<k=[J2;lbRINWEie3
 VDg1SIo80bB@j0V0VzS_@n1
 S1
 R0
-w1627555292
+w1627604861
 8/home/daniel/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv
 F/home/daniel/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv
 !i122 0
@@ -28,7 +28,7 @@ OV;L;2020.1;71
 r1
 !s85 0
 31
-!s108 1627604298.000000
+!s108 1627815744.000000
 !s107 /home/daniel/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+/home/daniel/Documents/GitHub/sigmoid_taylor/hdl|/home/daniel/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv|
 !i113 1
