@@ -6,7 +6,7 @@
 module sigmoid_taylor (
 	input 	logic [11:0] x,
 	input 	logic clk,
-	output 	logic [11:0] f_x
+	output 	logic [12:0] f_x
 );
 	
 	// sinais auxiliares
@@ -19,9 +19,9 @@ module sigmoid_taylor (
 	// caracteristica "por partes" da equacao
 	always @ (posedge clk) begin
 		if (x[11] == 0) begin
-			f_x <= S[15:4];
+			f_x <= {1'b0, S[15:4]};
 		end else begin
-			f_x <= q;
+			f_x <= {1'b0, q};
 		end
 	end
 	
@@ -130,22 +130,14 @@ module sigmoid_taylor (
 	// Essa parte esta funcional
 	always @ (*) begin
 		// essa logica implementa xi*1.0111 sendo 1.0111 = log_2(e) = 1/log_e(2)
-		// ------- suspended -------
 		B = xi>>1;
 		D = xi>>4;
-		//tmp_mult = xi+B-D;
-		//result_mult[11:1] = tmp_mult;
-		//result_mult[0] = 0;
 		result_mult = xi+B-D;
-		// ------- suspended -------
-
-		//result_mult <= xi * 4'b1_0111;
-
 		// 1/ln(2) ~= 1.46
-		// n eh a parte inteira de x / ln(2)
-		//phi eh a parte decimal de x / ln(2)
 		n = result_mult[11:8];
 		phi = result_mult[7:0];
+		// n eh a parte inteira de x / ln(2)
+		//phi eh a parte decimal de x / ln(2)
 	end
 
 	// Gerar valor de xi, ja contendo o sinal p

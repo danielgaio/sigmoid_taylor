@@ -9,53 +9,53 @@ z2
 !i10f 100
 cModel Technology
 Z0 d/home/daniel/Documents/GitHub/sigmoid_taylor/synthesis/simulation/modelsim
-vpsoa_sigmoid_tb
+vsigmoid_taylor
 Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
-Z2 !s110 1627819144
+Z2 !s110 1628375044
 !i10b 1
-!s100 ]SVH5Cb1ZfJ>cTWDXF7=^0
+!s100 5^<;5fJ4^9m>=MHW<zL=33
 Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
-I7f:TNSFYFZMATV>hd^R7z0
+IXB1PCD6^h:F7jZ_3m>gJ;1
 Z4 VDg1SIo80bB@j0V0VzS_@n1
 S1
 R0
-w1627819127
-8/home/daniel/Documents/GitHub/sigmoid_taylor/testbenches/taylor_sigmoid_tb.sv
-F/home/daniel/Documents/GitHub/sigmoid_taylor/testbenches/taylor_sigmoid_tb.sv
-!i122 210
-L0 5 138
+w1627951365
+8/home/daniel/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv
+F/home/daniel/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv
+!i122 251
+L0 6 148
 Z5 OV;L;2020.1;71
 r1
 !s85 0
 31
-!s108 1627819144.000000
-!s107 /home/daniel/Documents/GitHub/sigmoid_taylor/testbenches/taylor_sigmoid_tb.sv|
-!s90 -reportprogress|300|-work|work|-sv|-stats=none|/home/daniel/Documents/GitHub/sigmoid_taylor/testbenches/taylor_sigmoid_tb.sv|
+Z6 !s108 1628375044.000000
+!s107 /home/daniel/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|/home/daniel/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv|
 !i113 1
-Z6 o-work work -sv
-Z7 tCvgOpt 0
-vsigmoid_taylor
+Z7 o-work work -sv
+Z8 tCvgOpt 0
+vtaylor_sigmoid_tb
 R1
 R2
 !i10b 1
-!s100 d`hEBC3zZ^o_mEG@bOI`=0
+!s100 4Xa[LiA;d1PQbGY0Vf0NJ3
 R3
-I4onMJmG761C_b`BL3gFca1
+IOc[P69PV9Q<P6o:JdnMKi2
 R4
 S1
 R0
-w1627604861
-8/home/daniel/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv
-F/home/daniel/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv
-!i122 209
-L0 6 156
+w1628375030
+8/home/daniel/Documents/GitHub/sigmoid_taylor/testbenches/taylor_sigmoid_tb.sv
+F/home/daniel/Documents/GitHub/sigmoid_taylor/testbenches/taylor_sigmoid_tb.sv
+!i122 252
+L0 5 246
 R5
 r1
 !s85 0
 31
-!s108 1627819143.000000
-!s107 /home/daniel/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv|
-!s90 -reportprogress|300|-work|work|-sv|-stats=none|/home/daniel/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv|
-!i113 1
 R6
+!s107 /home/daniel/Documents/GitHub/sigmoid_taylor/testbenches/taylor_sigmoid_tb.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|/home/daniel/Documents/GitHub/sigmoid_taylor/testbenches/taylor_sigmoid_tb.sv|
+!i113 1
 R7
+R8

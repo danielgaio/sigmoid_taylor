@@ -2,18 +2,19 @@
 
 `timescale 1ns/1ps
 
-module psoa_sigmoid_tb();
-	logic [11:0] x_tb;
-	logic [11:0] f_x_tb;
-	logic clk_tb;
-
-	shortreal 	generated_results [4096];
-	shortreal 	expected_results [4096];
-	logic 			j;
-	shortreal 	passo, passo_abs, temp, temp2; // 32 bit
-	int 				k, i;
-	shortreal 	erro_medio, max_error;
-	int 				clk_counter, file_descriptor;
+module taylor_sigmoid_tb();
+	reg 	[11:0] 	fracionaria;
+	logic [11:0] 	x_tb;
+	logic [12:0] 	f_x_tb;
+	logic [11:0]	input_dut;
+	logic 				inteira;
+	logic 				clk_tb;
+	shortreal 		generated_results [4096];
+	shortreal 		expected_results [4096];
+	shortreal 		passo, passo_abs, temp, temp2; // 32 bit
+	shortreal 		erro_medio, max_error, converted;
+	int 					i, j, k;
+	int 					clk_counter, file_descriptor, expo;
 
 	// modulo teste
 	sigmoid_taylor sigmoid_taylor_DUT(
@@ -40,6 +41,7 @@ module psoa_sigmoid_tb();
 
 	// estimulos
 	initial begin
+		// ============ TESTES MANUAIS ============
 		//fork
 		    // x_tb = 12'b0010_10000000;	// sig(2.5)=0.924 | em bin: 000_11101101
 		    // x_tb = 12'b0011_00000000; // +3
@@ -50,57 +52,100 @@ module psoa_sigmoid_tb();
 		//join
 		//$stop;
 
-		// secao para geracao de valores de entrada
-		// fork
-		// 	passo = -8;
-		// 	// intervalo de [-8,+8]
-		// 	for (i=0; i<=1000; i++) begin
-		// 		// se input for negativo injetar valor absoluto e guardar (1 - result)
-		// 		if (passo < 0) begin
-		// 			passo_abs = -passo;
-		// 			x_tb = passo_abs*1024;
-		// 		// se input for positivo
-		// 		end else begin
-		// 			x_tb = passo*1024;
-		// 		end
-
-		// 		$display("x= %d", x_tb);
-		// 		#40
-
-		// 		if (passo < 0) begin
-
-		// 			//if (clk_counter > 1) begin
-		// 				generated_results [i] = 1 - (shortreal'(f_x_tb)/shortreal'(1024));
-		// 				$display("generated result [%d]: %f", i, generated_results[i]);
-		// 			//end
-
-		// 		end else begin
-
-		// 			generated_results [i] = (shortreal'(f_x_tb)/shortreal'(1024));
-		// 			$display("generated result [%d]: %f", i, generated_results[i]);
-
-		// 		end
-		// 		passo += 0.016;
-		// 	end
-		// join
-		// $stop;
-
-		// calculando valor preciso e guardando em expected_results
+		// ============= ENTRADAS PARA A ARQUITETURA ==========
 		fork
 			// Cria controlador do arquivo txt
-			file_descriptor = $fopen("./../../../testbenches/log_exact_values.txt", "a");
+			file_descriptor = $fopen(
+				"./../../../testbenches/log_obtained_values.txt", "w"
+			);
+
+			if (file_descriptor)
+				$display("Arquivo aberto com sucesso: %0d", file_descriptor);
+			else
+				$display("Erro na abertura do arquivo: %0d", file_descriptor);
+
+			// gerando todos os valores de teste para o DUT
+			input_dut = 12'b0000_00000000;
+			for (i=0; i<4095; i=i+1) begin
+
+				// pular o primeiro valor negativo, porque é calculado como zero
+				if (input_dut == 12'b1000_00000000) begin
+					input_dut = input_dut+12'b0000_00000001;
+					$fwrite(file_descriptor, "Pulou primeiro valor negativo.\n");
+				end
+
+				// injetar sinal no DUT
+				x_tb = input_dut;
+
+				$display("x_tb: %b", x_tb);
+				$fwrite(file_descriptor, "x_tb: %b\n", x_tb);
+
+				#20
+
+				// exibir saida do DUT
+				$display("y_tb: %b", f_x_tb);
+				$fwrite(file_descriptor, "y_tb: %b\n", f_x_tb);
+				
+				// converter resultado de saida do DUT para decimal e salva em um vetor
+				temp = 0;
+				expo = 1;
+
+				// converter parte inteira extraindo parte correspondente
+				inteira = f_x_tb[12];
+
+				// converter parte fracionaria
+				fracionaria = f_x_tb[11:0];
+				//$display("fracionaria: %b", fracionaria);
+
+				// da esquerda para a direita, ver se o bit eh 1, se sim, calcular
+				// 2^(posição do bit) e armazenar se proximo bit eh 1, calcular
+				// novamente e somar ao resultado ja armazenado
+				for (j = 11; j >= 0; j--) begin
+					if (fracionaria[j] == 1)
+						temp += shortreal'(1)/(2**(expo));
+
+					expo ++;
+					//$display("temp: %f", temp);
+				end
+
+				// somar parte inteira e fracionaria
+				converted = inteira + temp;
+
+				// guarda valor convertido em um vetor
+				generated_results[input_dut] = converted;
+				$display("generated_results[%d]: %f", input_dut,
+					generated_results[input_dut]);
+				$fwrite(file_descriptor, "generated_results[%d]: %f\n", input_dut,
+					generated_results[input_dut]);
+				$fwrite(file_descriptor, "-----------------------------\n");
+				input_dut = input_dut+12'b0000_00000001;
+			end
+
+		join
+		$stop;
+
+		// ============== CALCULO DE VALORES EXATOS ================
+
+		// calculando valor preciso e guardando em expected_results
+		// O bloco abaixo esta pronto
+		fork
+			// Cria controlador do arquivo txt
+			file_descriptor = $fopen(
+				"./../../../testbenches/log_exact_values.txt", "w"
+			);
 			if (file_descriptor)
 				$display("Arquivo aberto com sucesso: %0d", file_descriptor);
 			else
 				$display("Erro na abertura do arquivo: %0d", file_descriptor);
 
 			passo = -7.999;
-			for (k=0; k<4096; k++) begin
+			for (k=0; k<4095; k++) begin
 				expected_results[k] = 1.0/(1.0+(2.718281828**(-passo)));
 				$display("passo: %f", passo);
 				$fwrite(file_descriptor, "passo: %f\n", passo);
 				$display("expected_results[%d]: %f", k, expected_results[k]);
-				$fwrite(file_descriptor, "expected_results[%d]: %f\n", k, expected_results[k]);
+				$fwrite(file_descriptor, "expected_results[%d]: %f\n", k,
+					expected_results[k]);
 				passo += 0.00390;
 			end
 			//Encerra controlador do arquivo
@@ -109,32 +154,94 @@ module psoa_sigmoid_tb();
 		join
 		$stop;
 
+		// ============== CALCULO DOS ERROS ================
 		// calcular as diferencas entre valor gerado e valor esperado
-		fork
+		// fork
 			
-			max_error = 0;
-			for (k = 0; k < 1000; k++) begin
+		// 	max_error = 0;
+		// 	for (k = 0; k < 4095; k++) begin
+		// 		temp = expected_results[k];
+		// 		// temp2 pega o valor da metade do vetor
+		// 		temp2 = generated_results[k];
+				
+		// 		// calculando o erro maximo
+		// 		if ((temp2 - temp) > max_error)
+		// 			max_error = (temp2 - temp);
+
+		// 		// calculando o erro medio
+		// 		if ((temp2 - temp) < 0)
+		// 			erro_medio += -(temp2 - temp);
+		// 		else begin
+		// 			erro_medio += (temp2 - temp);
+		// 		end
+		// 	end
+
+		// 	//erro_medio = erro_medio/1000;
+		// 	erro_medio /= 4096;
+		// 	$display("Erro medio: %f", erro_medio);
+			
+		// 	// exibindo o erro maximo
+		// 	$display("Max_error: %f", max_error);
+		// join
+		// $stop;
+
+
+		// calculando para o primeiro intervalo 0 -> 0.5
+		// j é o indice exact value. k é o obtained value.
+		fork
+
+			j = 0;
+			for (k = 2049; k >= 4095; k++) begin
 				temp = expected_results[k];
+				temp2 = generated_results[j];
+
+				// calculando o erro medio
+				if ((temp2 - temp) < 0)
+					erro_medio += -(temp2 - temp);
+				else begin
+					erro_medio += (temp2 - temp);
+				end
+				
+				// calculando o erro maximo
+				if ((temp2 - temp) > max_error)
+					max_error = (temp2 - temp);
+				
+				j++;
+			end
+
+			// calculando para o segundo intervalo
+			max_error = 0;
+
+			// j é o indice exact value. k é o obtained value.
+			j = 2046;
+			for (k = 0; k <= 2048; k++) begin
+				// valor exato
+				temp = expected_results[j];
+				// valor obtido
 				temp2 = generated_results[k];
+
+				// calculando o erro medio
+				if ((temp2 - temp) < 0)
+					erro_medio += -(temp2 - temp);
+				else begin
+					erro_medio += (temp2 - temp);
+				end
 				
 				// calculando o erro maximo
 				if ((temp2 - temp) > max_error)
 					max_error = (temp2 - temp);
 
-				// calculando o erro medio
-				if ((temp2-temp) < 0)
-					erro_medio += -(temp2-temp);
-				else begin
-					erro_medio += (temp2-temp);
-				end
+				j++;
 			end
 
+			// exibindo o erro médio
 			//erro_medio = erro_medio/1000;
-			erro_medio /= 1000;
+			erro_medio /= 4096;
 			$display("Erro medio: %f", erro_medio);
-			
+				
 			// exibindo o erro maximo
 			$display("Max_error: %f", max_error);
+
 		join
 		$stop;
 
