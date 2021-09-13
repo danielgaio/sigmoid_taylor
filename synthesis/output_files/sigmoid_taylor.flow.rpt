@@ -1,5 +1,5 @@
 Flow report for sigmoid_taylor
-Thu Aug  5 22:32:00 2021
+Sat Sep  4 15:43:36 2021
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -41,20 +41,22 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Thu Aug  5 22:32:00 2021       ;
+; Flow Status                        ; Successful - Sat Sep  4 15:43:36 2021       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; sigmoid_taylor                              ;
 ; Top-level Entity Name              ; sigmoid_taylor                              ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 182                                         ;
-;     Total combinational functions  ; 182                                         ;
-;     Dedicated logic registers      ; 12                                          ;
+; Total logic elements               ; 182 / 6,272 ( 3 % )                         ;
+;     Total combinational functions  ; 182 / 6,272 ( 3 % )                         ;
+;     Dedicated logic registers      ; 12 / 6,272 ( < 1 % )                        ;
 ; Total registers                    ; 12                                          ;
-; Total pins                         ; 26                                          ;
+; Total pins                         ; 26 / 92 ( 28 % )                            ;
 ; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 0                                           ;
-; Embedded Multiplier 9-bit elements ; 0                                           ;
-; Total PLLs                         ; 0                                           ;
+; Total memory bits                  ; 0 / 276,480 ( 0 % )                         ;
+; Embedded Multiplier 9-bit elements ; 0 / 30 ( 0 % )                              ;
+; Total PLLs                         ; 0 / 2 ( 0 % )                               ;
+; Device                             ; EP4CE6E22C6                                 ;
+; Timing Models                      ; Final                                       ;
 +------------------------------------+---------------------------------------------+
 
 
@@ -63,7 +65,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 08/05/2021 22:31:53 ;
+; Start date & time ; 09/04/2021 15:43:17 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; sigmoid_taylor      ;
 +-------------------+---------------------+
@@ -74,7 +76,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id                        ;
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID               ; 176507751568776.162821351319814        ; --            ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID               ; 176507751568776.163078099707628        ; --            ; --          ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_signal_integrity ;
@@ -94,8 +96,12 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:08     ; 1.0                     ; 605 MB              ; 00:00:19                           ;
-; Total                ; 00:00:08     ; --                      ; --                  ; 00:00:19                           ;
+; Analysis & Synthesis ; 00:00:09     ; 1.0                     ; 604 MB              ; 00:00:23                           ;
+; Fitter               ; 00:00:05     ; 1.0                     ; 1144 MB             ; 00:00:05                           ;
+; Assembler            ; 00:00:01     ; 1.0                     ; 564 MB              ; 00:00:01                           ;
+; Timing Analyzer      ; 00:00:01     ; 1.0                     ; 686 MB              ; 00:00:02                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 808 MB              ; 00:00:00                           ;
+; Total                ; 00:00:16     ; --                      ; --                  ; 00:00:31                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -105,6 +111,10 @@ https://fpgasoftware.intel.com/eula.
 ; Module Name          ; Machine Hostname ; OS Name     ; OS Version  ; Processor type ;
 +----------------------+------------------+-------------+-------------+----------------+
 ; Analysis & Synthesis ; fedora           ; Fedora Core ; Fedora Core ; x86_64         ;
+; Fitter               ; fedora           ; Fedora Core ; Fedora Core ; x86_64         ;
+; Assembler            ; fedora           ; Fedora Core ; Fedora Core ; x86_64         ;
+; Timing Analyzer      ; fedora           ; Fedora Core ; Fedora Core ; x86_64         ;
+; EDA Netlist Writer   ; fedora           ; Fedora Core ; Fedora Core ; x86_64         ;
 +----------------------+------------------+-------------+-------------+----------------+
 
 
@@ -112,6 +122,10 @@ https://fpgasoftware.intel.com/eula.
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off sigmoid_taylor -c sigmoid_taylor
+quartus_fit --read_settings_files=off --write_settings_files=off sigmoid_taylor -c sigmoid_taylor
+quartus_asm --read_settings_files=off --write_settings_files=off sigmoid_taylor -c sigmoid_taylor
+quartus_sta sigmoid_taylor -c sigmoid_taylor
+quartus_eda --read_settings_files=off --write_settings_files=off sigmoid_taylor -c sigmoid_taylor
 
 
 
