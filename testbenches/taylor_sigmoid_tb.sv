@@ -11,8 +11,9 @@ module taylor_sigmoid_tb();
 	logic 				clk_tb;
 	shortreal 		generated_results [4096];
 	shortreal 		expected_results [4096];
+	shortreal 		desvio [4096];
 	shortreal 		passo, passo_abs, temp, temp2; // 32 bit
-	shortreal 		erro_medio, max_error, converted;
+	shortreal 		erro_medio, max_error, converted, variancia, desvio_padrao;
 	int 					i, j, k;
 	int 					clk_counter, file_descriptor, expo;
 
@@ -154,44 +155,13 @@ module taylor_sigmoid_tb();
 		join
 		$stop;
 
-		// ============== CALCULO DOS ERROS ================
-		// calcular as diferencas entre valor gerado e valor esperado
-		// fork
-			
-		// 	max_error = 0;
-		// 	for (k = 0; k < 4095; k++) begin
-		// 		temp = expected_results[k];
-		// 		// temp2 pega o valor da metade do vetor
-		// 		temp2 = generated_results[k];
-				
-		// 		// calculando o erro maximo
-		// 		if ((temp2 - temp) > max_error)
-		// 			max_error = (temp2 - temp);
-
-		// 		// calculando o erro medio
-		// 		if ((temp2 - temp) < 0)
-		// 			erro_medio += -(temp2 - temp);
-		// 		else begin
-		// 			erro_medio += (temp2 - temp);
-		// 		end
-		// 	end
-
-		// 	//erro_medio = erro_medio/1000;
-		// 	erro_medio /= 4096;
-		// 	$display("Erro medio: %f", erro_medio);
-			
-		// 	// exibindo o erro maximo
-		// 	$display("Max_error: %f", max_error);
-		// join
-		// $stop;
-
-
+		// ============== CALCULO DOS ERROS ===============
 		// calculando para o primeiro intervalo 0 -> 0.5
-		// j é o indice exact value. k é o obtained value.
+		// j é o indice exact value (0->0.5). k é o obtained value(0.5->1).
 		fork
 
 			j = 0;
-			for (k = 2049; k >= 4095; k++) begin
+			for (k = 2048; k >= 4095; k++) begin
 				temp = expected_results[k];
 				temp2 = generated_results[j];
 
@@ -210,6 +180,7 @@ module taylor_sigmoid_tb();
 			end
 
 			// calculando para o segundo intervalo
+			// j(0.5->1), k(0->0.5)
 			max_error = 0;
 
 			// j é o indice exact value. k é o obtained value.
@@ -241,6 +212,78 @@ module taylor_sigmoid_tb();
 				
 			// exibindo o erro maximo
 			$display("Max_error: %f", max_error);
+
+		join
+		$stop;
+
+		// calculando variância e desvio padrão
+		fork
+			// calcular desvio
+			// calculando para o primeiro intervalo 0 -> 0.5
+			// j é o indice exact value. k é o obtained value.
+			j = 0;
+			for (k = 2049; k >= 4095; k++) begin
+				temp = expected_results[j];
+				temp2 = generated_results[k];
+
+				$display("temp: %f", temp);
+				$display("temp2: %f", temp2);
+
+				if ((temp2-temp) < 0) begin
+					//$display((-(temp2-temp)));
+					if ((-(temp2-temp)) - erro_medio < 0)
+						desvio[j] = -((-(temp2-temp)) - erro_medio);
+					else
+						desvio[j] = (-(temp2-temp)) - erro_medio;
+				end else begin
+					if (((temp2-temp)) - erro_medio < 0)
+						desvio[j] = -((temp2-temp) - erro_medio);
+					else
+						desvio[j] = (temp2-temp) - erro_medio;
+				end
+				$display("desvio[%d]: %f", j, desvio[j]);
+				j++;
+			end
+
+		join
+		$stop;
+
+		fork
+			// calculando para o segundo intervalo
+			// j é o indice exact value. k é o obtained value.
+			j = 2046;
+			for (k = 0; k <= 2047; k++) begin
+				// valor exato
+				temp = expected_results[j];
+				// valor obtido
+				temp2 = generated_results[k];
+
+				if ((temp2-temp) < 0) begin
+					//$display((-(temp2-temp)));
+					if ((-(temp2-temp)) - erro_medio < 0)
+						desvio[j] = -((-(temp2-temp)) - erro_medio);
+					else
+						desvio[j] = (-(temp2-temp)) - erro_medio;
+				end else begin
+					if (((temp2-temp)) - erro_medio < 0)
+						desvio[j] = -((temp2-temp) - erro_medio);
+					else
+						desvio[j] = (temp2-temp) - erro_medio;
+				end
+				$display("desvio[%d]: %f", j, desvio[j]);
+				j++;
+			end
+
+			// calcular variancia
+			for (k = 0; k < 4095; k++) begin
+				variancia += desvio[k]**2;
+			end
+			variancia /= 4096;
+			$display("Variancia: %f", variancia);
+
+			// calculo do desvio padrao
+			desvio_padrao = variancia**(1.0/2.0);
+			$display("Desvio padrao: %f", desvio_padrao);
 
 		join
 		$stop;

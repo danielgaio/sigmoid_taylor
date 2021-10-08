@@ -57,18 +57,18 @@ clk => f_x[9]~reg0.CLK
 clk => f_x[10]~reg0.CLK
 clk => f_x[11]~reg0.CLK
 clk => f_x[12]~reg0.CLK
-f_x[0] <= f_x[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-f_x[1] <= f_x[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-f_x[2] <= f_x[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-f_x[3] <= f_x[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-f_x[4] <= f_x[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-f_x[5] <= f_x[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-f_x[6] <= f_x[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-f_x[7] <= f_x[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-f_x[8] <= f_x[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-f_x[9] <= f_x[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-f_x[10] <= f_x[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-f_x[11] <= f_x[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-f_x[12] <= f_x[12]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+f_x[0] << f_x[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+f_x[1] << f_x[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+f_x[2] << f_x[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+f_x[3] << f_x[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+f_x[4] << f_x[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+f_x[5] << f_x[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+f_x[6] << f_x[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+f_x[7] << f_x[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+f_x[8] << f_x[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+f_x[9] << f_x[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+f_x[10] << f_x[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+f_x[11] << f_x[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+f_x[12] << f_x[12]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
