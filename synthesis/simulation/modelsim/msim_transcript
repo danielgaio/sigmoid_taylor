@@ -11,13 +11,13 @@
 # 
 # vlog -sv -work work +incdir+/home/danielgaio/Documents/GitHub/sigmoid_taylor/hdl {/home/danielgaio/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 22:03:30 on Oct 07,2021
+# Start time: 08:17:16 on Oct 08,2021
 # vlog -reportprogress 300 -sv -work work "+incdir+/home/danielgaio/Documents/GitHub/sigmoid_taylor/hdl" /home/danielgaio/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv 
 # -- Compiling module sigmoid_taylor
 # 
 # Top level modules:
 # 	sigmoid_taylor
-# End time: 22:03:30 on Oct 07,2021, Elapsed time: 0:00:00
+# End time: 08:17:16 on Oct 08,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # 

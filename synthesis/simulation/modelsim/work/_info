@@ -11,7 +11,7 @@ cModel Technology
 d/home/daniel/Documents/GitHub/sigmoid_taylor/synthesis/simulation/modelsim
 vsigmoid_taylor
 Z0 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
-Z1 !s110 1633657821
+Z1 !s110 1633691850
 !i10b 1
 !s100 5^<;5fJ4^9m>=MHW<zL=33
 Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
@@ -22,40 +22,40 @@ Z4 d/home/danielgaio/Documents/GitHub/sigmoid_taylor/synthesis/simulation/models
 w1630777845
 8/home/danielgaio/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv
 F/home/danielgaio/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv
-!i122 52
+!i122 85
 L0 6 148
 Z5 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z6 !s108 1633657821.000000
+!s108 1633691849.000000
 !s107 /home/danielgaio/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|/home/danielgaio/Documents/GitHub/sigmoid_taylor/hdl/sigmoid_taylor.sv|
 !i113 1
-Z7 o-work work -sv
-Z8 tCvgOpt 0
+Z6 o-work work -sv
+Z7 tCvgOpt 0
 vtaylor_sigmoid_tb
 R0
 R1
 !i10b 1
-!s100 WTb7D=RAe::zcL>:F;1P]1
+!s100 13LFhCPMQB4jG^J1X5RVd2
 R2
-I5[ZR>^C_@_NOnfKo:z>;91
+IeFh7k6F79<=ofJlZ2h_2V0
 R3
 S1
 R4
-w1633657815
+w1633661283
 8/home/danielgaio/Documents/GitHub/sigmoid_taylor/testbenches/taylor_sigmoid_tb.sv
 F/home/danielgaio/Documents/GitHub/sigmoid_taylor/testbenches/taylor_sigmoid_tb.sv
-!i122 53
-L0 5 289
+!i122 86
+L0 5 260
 R5
 r1
 !s85 0
 31
-R6
+!s108 1633691850.000000
 !s107 /home/danielgaio/Documents/GitHub/sigmoid_taylor/testbenches/taylor_sigmoid_tb.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|/home/danielgaio/Documents/GitHub/sigmoid_taylor/testbenches/taylor_sigmoid_tb.sv|
 !i113 1
+R6
 R7
-R8

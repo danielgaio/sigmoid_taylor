@@ -140,7 +140,7 @@ module taylor_sigmoid_tb();
 				$display("Erro na abertura do arquivo: %0d", file_descriptor);
 
 			passo = -7.999;
-			for (k=0; k<4095; k++) begin
+			for (k=0; k<=4095; k++) begin
 				expected_results[k] = 1.0/(1.0+(2.718281828**(-passo)));
 				$display("passo: %f", passo);
 				$fwrite(file_descriptor, "passo: %f\n", passo);
@@ -218,41 +218,11 @@ module taylor_sigmoid_tb();
 
 		// calculando variância e desvio padrão
 		fork
-			// calcular desvio
-			// calculando para o primeiro intervalo 0 -> 0.5
-			// j é o indice exact value. k é o obtained value.
-			j = 0;
-			for (k = 2049; k >= 4095; k++) begin
-				temp = expected_results[j];
-				temp2 = generated_results[k];
-
-				$display("temp: %f", temp);
-				$display("temp2: %f", temp2);
-
-				if ((temp2-temp) < 0) begin
-					//$display((-(temp2-temp)));
-					if ((-(temp2-temp)) - erro_medio < 0)
-						desvio[j] = -((-(temp2-temp)) - erro_medio);
-					else
-						desvio[j] = (-(temp2-temp)) - erro_medio;
-				end else begin
-					if (((temp2-temp)) - erro_medio < 0)
-						desvio[j] = -((temp2-temp) - erro_medio);
-					else
-						desvio[j] = (temp2-temp) - erro_medio;
-				end
-				$display("desvio[%d]: %f", j, desvio[j]);
-				j++;
-			end
-
-		join
-		$stop;
-
-		fork
-			// calculando para o segundo intervalo
-			// j é o indice exact value. k é o obtained value.
-			j = 2046;
-			for (k = 0; k <= 2047; k++) begin
+			k = 2048;
+			for (j = 0; j <= 4095; j++) begin
+				if (j == 2048)
+		 			k = 0;
+				$display("k: %d", k);
 				// valor exato
 				temp = expected_results[j];
 				// valor obtido
@@ -271,11 +241,12 @@ module taylor_sigmoid_tb();
 						desvio[j] = (temp2-temp) - erro_medio;
 				end
 				$display("desvio[%d]: %f", j, desvio[j]);
-				j++;
+				k++;
+				
 			end
 
 			// calcular variancia
-			for (k = 0; k < 4095; k++) begin
+			for (k = 0; k <= 4095; k++) begin
 				variancia += desvio[k]**2;
 			end
 			variancia /= 4096;

@@ -1,5 +1,5 @@
 Flow report for sigmoid_taylor
-Thu Oct  7 22:03:55 2021
+Fri Oct  8 08:16:59 2021
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -41,7 +41,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Thu Oct  7 22:03:55 2021       ;
+; Flow Status                        ; Successful - Fri Oct  8 08:16:59 2021       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; sigmoid_taylor                              ;
 ; Top-level Entity Name              ; sigmoid_taylor                              ;
@@ -65,7 +65,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/07/2021 22:03:39 ;
+; Start date & time ; 10/08/2021 08:16:43 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; sigmoid_taylor      ;
 +-------------------+---------------------+
@@ -76,7 +76,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id                        ;
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID               ; 176507751568776.163365501904504        ; --            ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID               ; 176507751568776.163369180305056        ; --            ; --          ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_signal_integrity ;
@@ -96,10 +96,10 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:07     ; 1.0                     ; 604 MB              ; 00:00:19                           ;
-; Fitter               ; 00:00:03     ; 1.0                     ; 1145 MB             ; 00:00:04                           ;
-; Assembler            ; 00:00:01     ; 1.0                     ; 565 MB              ; 00:00:01                           ;
-; Timing Analyzer      ; 00:00:02     ; 1.0                     ; 686 MB              ; 00:00:01                           ;
+; Analysis & Synthesis ; 00:00:07     ; 1.0                     ; 605 MB              ; 00:00:19                           ;
+; Fitter               ; 00:00:03     ; 1.0                     ; 1155 MB             ; 00:00:04                           ;
+; Assembler            ; 00:00:01     ; 1.0                     ; 564 MB              ; 00:00:01                           ;
+; Timing Analyzer      ; 00:00:02     ; 1.0                     ; 687 MB              ; 00:00:01                           ;
 ; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 808 MB              ; 00:00:00                           ;
 ; Total                ; 00:00:14     ; --                      ; --                  ; 00:00:25                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
